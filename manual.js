@@ -132,3 +132,12 @@
     img.title = img.src.match(/-([^.]+)/)[1];
   });
 }
+
+{ /// Morse Code: Sort words
+  const table = document.querySelector('.morse-frequency-table');
+  const trs = Array.from(table.rows).slice(1);
+  sortAlphabetically(trs);
+  for (const tr of trs) {
+    table.appendChild(tr);
+  }
+}
