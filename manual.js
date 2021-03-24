@@ -89,10 +89,12 @@
   document.querySelector('.whos-on-first-look-at-display .red').className = '';
 }
 
-{ /// Complex wires: Colored ellipses
-  $('svg ellipse')[0].style.stroke = 'red';
-  $('svg ellipse')[1].style.stroke = 'blue';
-  $('svg ellipse')[3].style.stroke = 'yellow';
+{ /// Symbols: Name tooltips
+  // https://www.reddit.com/r/ktane/comments/3oab5z/full_chart_of_symbols_and_their_names/
+  document.querySelectorAll('.keypad-table img').forEach(img => {
+    // https://bombmanual.com/web/img/modules/keypad/6-omega.png → omega
+    img.title = img.src.match(/-([^.]+)/)[1];
+  });
 }
 
 { /// Confusing words / Who’s on First: Sort & trim
@@ -125,14 +127,6 @@
   }
 }
 
-{ /// Symbols: Name tooltips
-  // https://www.reddit.com/r/ktane/comments/3oab5z/full_chart_of_symbols_and_their_names/
-  document.querySelectorAll('.keypad-table img').forEach(img => {
-    // https://bombmanual.com/web/img/modules/keypad/6-omega.png → omega
-    img.title = img.src.match(/-([^.]+)/)[1];
-  });
-}
-
 { /// Morse Code: Sort words
   const table = document.querySelector('.morse-frequency-table');
   const trs = Array.from(table.rows).slice(1);
@@ -140,4 +134,10 @@
   for (const tr of trs) {
     table.appendChild(tr);
   }
+}
+
+{ /// Complex wires: Colored ellipses
+  $('svg ellipse')[0].style.stroke = 'red';
+  $('svg ellipse')[1].style.stroke = 'blue';
+  $('svg ellipse')[3].style.stroke = 'yellow';
 }
